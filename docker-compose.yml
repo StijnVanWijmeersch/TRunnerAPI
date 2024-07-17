@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  trunner.presentation:
+    image: ${DOCKER_REGISTRY-}trunnerpresentation
+    container_name: "TRunner.Presentation"
+    build:
+      context: .
+      dockerfile: src/TRunner.Presentation/Dockerfile
+    ports:
+       - "5000:8080"
+       - "5001:8081"
+    depends_on:
+       - trunner.database
+
+  trunner.Database:
+   image: mcr.microsoft.com/mssql/server:2022-latest
+   container_name: "TRunner.Database"
+   environment:
+     SA_PASSWORD: "trunner"
+     ACCEPT_EULA: "Y"
+   ports:
+     - "1433:1433"
+   volumes:
+     - ./src/TRunner.Database/Database:/var/opt/mssql/data
