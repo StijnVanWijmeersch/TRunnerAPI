@@ -1,9 +1,7 @@
 ﻿using TRunner.Domain.Abstractions;
 
 namespace TRunner.Domain.Users;
-public sealed class UserCreatedDomainEvent : IDomainEvent
+public sealed class UserCreatedDomainEvent(Guid userId) : DomainEvent
 {
-    public Guid Id => throw new NotImplementedException();
-
-    public DateTime OccurredOn => throw new NotImplementedException();
+    public Guid UserId { get; init; } = userId;
 }

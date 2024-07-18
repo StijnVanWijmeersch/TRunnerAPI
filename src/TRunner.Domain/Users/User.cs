@@ -9,6 +9,7 @@ public sealed class User : Entity
     public string LastName { get; private set; }
     public string FirstName { get; private set; }
     public string Email { get; private set; }
+    public bool EmailConfirmed { get; private set; }
     public string HashedPassword { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
@@ -24,8 +25,11 @@ public sealed class User : Entity
             LastName = lastName,
             FirstName = firstName,
             Email = email,
+            EmailConfirmed = false,
             HashedPassword = hashedPassword
         };
+
+        user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
 
         return user;
     }
@@ -45,6 +49,10 @@ public sealed class User : Entity
     public Result UpdateEmail(string newEmail)
     {
         Email = newEmail;
+        EmailConfirmed = false;
+
+        RaiseDomainEvent(new UserEmailChangedDomainEvent(Id, Email));
+
         return Result.Success();
     }
 

@@ -10,8 +10,6 @@ services:
     ports:
        - "5000:8080"
        - "5001:8081"
-    depends_on:
-       - trunner.database
 
   trunner.Database:
    image: mcr.microsoft.com/mssql/server:2022-latest
@@ -23,3 +21,17 @@ services:
      - "1433:1433"
    volumes:
      - ./src/TRunner.Database/Database:/var/opt/mssql/data
+
+  trunner.identity:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: "TRunner.Identity"
+    command: start-dev #--import-realm
+    environment:
+      - KC_HEALTH_ENABLED=true
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./.containers/identity:/opt/keycloak/data
+      - ./.files:/opt/keycloak/data/import
+    ports:
+      - 18080:8080 
