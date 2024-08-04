@@ -1,6 +1,0 @@
-@TRunner.Presentation_HostAddress = http://localhost:5028
-
-GET {{TRunner.Presentation_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

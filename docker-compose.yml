@@ -1,9 +1,9 @@
 version: '3.4'
 
 services:
-  trunner.presentation:
-    image: ${DOCKER_REGISTRY-}trunnerpresentation
-    container_name: "TRunner.Presentation"
+  trunner.api:
+    image: ${DOCKER_REGISTRY-}trunnerapi
+    container_name: "TRunner.API"
     build:
       context: .
       dockerfile: src/TRunner.Presentation/Dockerfile
