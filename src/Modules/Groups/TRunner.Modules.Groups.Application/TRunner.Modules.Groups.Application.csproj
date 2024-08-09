@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\TRunner.Common.Application\TRunner.Common.Application.csproj" />
     <ProjectReference Include="..\TRunner.Modules.Groups.Domain\TRunner.Modules.Groups.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Groups\CreateGroup\" />
     <Folder Include="Groups\GetGroup\" />
     <Folder Include="Groups\GetGroups\" />
     <Folder Include="Groups\CloseGroup\" />
