@@ -3,9 +3,9 @@
 namespace TRunner.Modules.Groups.Domain.Runners;
 public sealed class Runner : Entity
 {
-    public Guid Id { get; set; }
-    public string UserName { get; set; }
-    public int Score { get; set; }
+    public Guid Id { get; private set; }
+    public string UserName { get; private set; }
+    public int Score { get; private set; }
 
     private Runner() { }
 

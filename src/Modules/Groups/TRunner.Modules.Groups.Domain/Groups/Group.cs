@@ -6,12 +6,12 @@ namespace TRunner.Modules.Groups.Domain.Groups;
 
 public sealed class Group : Entity
 {
-    public Guid Id { get; set; }
-    public int Size { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public Guid OwnerId { get; set; }
-    public GroupStatus Status { get; set; }
+    public Guid Id { get; private set; }
+    public int Size { get; private set; }
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public Guid OwnerId { get; private set; }
+    public GroupStatus Status { get; private set; }
 
     // Navigational properties
     private IList<RunnerGroup> Runners { get; set; }
