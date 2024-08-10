@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\TRunner.Common.Infrastructure\TRunner.Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\TRunner.Modules.Users.Application\TRunner.Modules.Users.Application.csproj" />
+    <ProjectReference Include="..\TRunner.Modules.Users.Presentation\TRunner.Modules.Users.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>
