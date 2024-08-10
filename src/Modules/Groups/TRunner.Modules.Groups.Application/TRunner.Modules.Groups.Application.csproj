@@ -11,12 +11,4 @@
     <ProjectReference Include="..\TRunner.Modules.Groups.Domain\TRunner.Modules.Groups.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Groups\GetGroup\" />
-    <Folder Include="Groups\GetGroups\" />
-    <Folder Include="Groups\CloseGroup\" />
-    <Folder Include="Groups\ChangeGroupOwner\" />
-    <Folder Include="Groups\RemoveGroup\" />
-  </ItemGroup>
-
 </Project>

@@ -1,5 +1,6 @@
 ﻿using TRunner.Common.Domain;
 using TRunner.Modules.Groups.Domain.JoinTables;
+using TRunner.Modules.Groups.Domain.Runners;
 
 namespace TRunner.Modules.Groups.Domain.Groups;
 
@@ -13,7 +14,7 @@ public sealed class Group : Entity
     public GroupStatus Status { get; set; }
 
     // Navigational properties
-    public IList<RunnerGroup> Runners { get; set; }
+    private IList<RunnerGroup> Runners { get; set; }
 
     private Group() { }
 
@@ -31,6 +32,8 @@ public sealed class Group : Entity
 
         return group;
     }
+
+    public int RunnersCount => Runners.Count;
 
     public Result Close()
     {
@@ -60,23 +63,23 @@ public sealed class Group : Entity
         return Result.Success();
     }
 
-    public Result RemoveRunner(Guid runnerId)
+    public Result RemoveRunner(Runner oldRunner)
     {
-        RunnerGroup? runner = Runners.FirstOrDefault(gr => gr.RunnerId == runnerId);
+        RunnerGroup? runner = Runners.FirstOrDefault(gr => gr.RunnerId == oldRunner.Id);
 
         if (runner is null)
         {
-            return Result.Failure(GroupErrors.RunnerNotFound(runnerId));
+            return Result.Failure(GroupErrors.RunnerNotFound(oldRunner.Id));
         }
 
         Runners.Remove(runner);
 
-        RaiseDomainEvent(new RunnerRemovedFromGroupDomainEvent(runnerId, Id));
+        RaiseDomainEvent(new RunnerRemovedFromGroupDomainEvent(oldRunner.Id, Id));
 
         return Result.Success();
     }
 
-    public Result AddRunner(Guid runnerId)
+    public Result AddRunner(Runner newRunner)
     {
 
         if (Runners.Count >= Size)
@@ -84,17 +87,17 @@ public sealed class Group : Entity
             return Result.Failure(GroupErrors.GroupIsFull);
         }
 
-        RunnerGroup? runner = Runners.FirstOrDefault(gr => gr.RunnerId == runnerId);
+        RunnerGroup? runner = Runners.FirstOrDefault(gr => gr.RunnerId == newRunner.Id);
 
         if (runner is not null)
         {
-            return Result.Failure(GroupErrors.RunnerAlreadyInGroup(runnerId));
+            return Result.Failure(GroupErrors.RunnerAlreadyInGroup(newRunner.Id));
         }
 
         var runnerGroup = new RunnerGroup
         {
             GroupId = Id,
-            RunnerId = runnerId
+            RunnerId = newRunner.Id
         };
 
         Runners.Add(runnerGroup);
@@ -121,13 +124,9 @@ public sealed class Group : Entity
         return Result.Success();
     }
 
-    public Result Remove()
+    public void Remove()
     {
-        Runners.Clear();
-
         RaiseDomainEvent(new GroupRemovedDomainEvent(Id));
-
-        return Result.Success();
     }
 
 
