@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\TRunner.Common.Infrastructure\TRunner.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\TRunner.Modules.Groups.Api\TRunner.Modules.Groups.Presentation.csproj" />
     <ProjectReference Include="..\TRunner.Modules.Groups.Application\TRunner.Modules.Groups.Application.csproj" />
   </ItemGroup>
