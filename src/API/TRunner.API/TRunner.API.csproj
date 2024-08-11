@@ -17,6 +17,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="8.0.0" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="9.30.0.95878">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Groups\TRunner.Modules.Groups.Infrastructure\TRunner.Modules.Groups.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Modules\Users\TRunner.Modules.Users.Infrastructure\TRunner.Modules.Users.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

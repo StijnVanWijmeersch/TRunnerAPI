@@ -35,3 +35,13 @@ services:
       - ./.files:/opt/keycloak/data/import
     ports:
       - 18080:8080 
+
+  trunner.seq:
+   image: datalust/seq:latest
+   container_name: "TRunner.Seq"
+   environment:
+     - ACCEPT_EULA=Y
+   ports:
+     - 5341:5341
+     - 8081:80
+   restart: always

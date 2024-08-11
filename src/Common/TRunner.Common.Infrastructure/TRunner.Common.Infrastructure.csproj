@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TRunner.Common.Application\TRunner.Common.Application.csproj" />
+  </ItemGroup>
+
 </Project>
