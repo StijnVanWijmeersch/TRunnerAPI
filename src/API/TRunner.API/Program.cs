@@ -1,6 +1,7 @@
 using System.Reflection;
 using Serilog;
 using TRunner.API.Extensions;
+using TRunner.API.Middleware;
 using TRunner.Common.Application;
 using TRunner.Common.Infrastructure;
 using TRunner.Common.Presentation.Endpoints;
@@ -8,7 +9,10 @@ using TRunner.Modules.Groups.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((context, loggingConfiguration) => loggingConfiguration.ReadFrom.Configuration(context.Configuration)); 
+builder.Host.UseSerilog((context, loggingConfiguration) => loggingConfiguration.ReadFrom.Configuration(context.Configuration));
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -36,6 +40,8 @@ if (app.Environment.IsDevelopment())
 app.MapEndPoints();
 
 app.UseSerilogRequestLogging();
+
+app.UseExceptionHandler();
 
 app.Run();
 
