@@ -1,9 +1,7 @@
-﻿using System.Net.Http.Headers;
-using System.Reflection;
+﻿using System.Reflection;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using Microsoft.Extensions.Logging.Abstractions;
 using TRunner.Common.Application.Messaging;
 using TRunner.Common.Domain;
 
@@ -69,5 +67,5 @@ internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
     }
 
     private static ValidationError CreateValidationError(ValidationFailure[] failures)
-        => new(failures.Select(failure => Error.Problem(failure.ErrorCode, failure.ErrorMessage)).ToArray()); 
+        => new(failures.Select(failure => Error.Problem(failure.ErrorCode, failure.ErrorMessage)).ToArray());
 }

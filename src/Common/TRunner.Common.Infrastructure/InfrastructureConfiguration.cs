@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Data.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using TRunner.Common.Application.Data;
@@ -11,9 +11,9 @@ public static class InfrastructureConfiguration
 
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, string dbConnectionString)
     {
-        var sqlConnection = new SqlConnection(dbConnectionString);
+         DataSource    new SqmDa (dbConnectionString);
 
-        services.TryAddSingleton(sqlConnection);
+        services.TryAddSingleton(sqlDataSource);
 
         services.TryAddScoped<IDbConnectionFactory, DbConnectionFactory>();
 

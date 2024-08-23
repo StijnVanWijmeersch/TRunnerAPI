@@ -11,4 +11,8 @@
     <ProjectReference Include="..\TRunner.Modules.Users.Domain\TRunner.Modules.Users.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Users\" />
+  </ItemGroup>
+
 </Project>

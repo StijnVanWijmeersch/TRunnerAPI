@@ -1,13 +1,11 @@
 ﻿using System.Data.Common;
-using Microsoft.Data.SqlClient;
 using TRunner.Common.Application.Data;
 
 namespace TRunner.Common.Infrastructure.Data;
-internal class DbConnectionFactory(SqlConnection connection) : IDbConnectionFactory
+internal class DbConnectionFactory(DbDataSource connection) : IDbConnectionFactory
 {
-    public async ValueTask<DbConnection> OpenConnectionAsync(CancellationToken cancellationToken = default)
+    public async ValueTask<DbConnection> OpenConnectionAsync()
     {
-        await connection.OpenAsync(cancellationToken);
-        return connection;
+        return await connection.OpenConnectionAsync();
     }
 }

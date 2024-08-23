@@ -28,4 +28,16 @@ public sealed class User : Entity
 
         return user;
     }
+
+    public void Update(string userName)
+    {
+        if (UserName == userName)
+        {
+            return;
+        }
+
+        UserName = userName;
+
+        RaiseDomainEvent(new UserNameUpdatedDomainEvent(Id, UserName));
+    }
 }
