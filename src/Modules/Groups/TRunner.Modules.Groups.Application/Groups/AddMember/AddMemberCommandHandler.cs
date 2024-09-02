@@ -5,12 +5,12 @@ using TRunner.Modules.Groups.Domain.Groups;
 using TRunner.Modules.Groups.Domain.Runners;
 
 namespace TRunner.Modules.Groups.Application.Groups.AddRunner;
-internal sealed class AddRunnerCommandHandler(
+internal sealed class AddMemberCommandHandler(
     IGroupRepository groupRepository,
-    IRunnerRepository runnerRepository,
-    IUnitOfWork unitOfWork) : ICommandHandler<AddRunnerCommand>
+    IMemberRepository memberRepository,
+    IUnitOfWork unitOfWork) : ICommandHandler<AddMemberCommand>
 {
-    public async Task<Result> Handle(AddRunnerCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(AddMemberCommand request, CancellationToken cancellationToken)
     {
         Group? group = await groupRepository.GetAsync(request.GroupId, cancellationToken);
 
@@ -19,14 +19,14 @@ internal sealed class AddRunnerCommandHandler(
             return Result.Failure(GroupErrors.NotFound(request.GroupId));
         }
 
-        Runner? runner = await runnerRepository.GetAsync(request.RunnerId, cancellationToken);
+        Member? member = await memberRepository.GetAsync(request.MemberId, cancellationToken);
 
-        if (runner is null) 
+        if (member is null) 
         {
-            return Result.Failure(RunnerErrors.NotFound(request.RunnerId));
+            return Result.Failure(MemberErrors.NotFound(request.MemberId));
         }
 
-        Result result = group.AddRunner(runner);
+        Result result = group.AddMember(member);
 
         if (result.IsFailure)
         {

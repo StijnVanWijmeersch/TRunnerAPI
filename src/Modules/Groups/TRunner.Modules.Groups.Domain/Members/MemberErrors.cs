@@ -1,8 +1,8 @@
 ﻿using TRunner.Common.Domain;
 
 namespace TRunner.Modules.Groups.Domain.Runners;
-public static class RunnerErrors
+public static class MemberErrors
 {
     public static Error NotFound(Guid id)
-        => Error.NotFound("Runner.NotFound", $"Runner with id {id} was not found.");
+        => Error.NotFound("Member.NotFound", $"Member with id {id} was not found.");
 }

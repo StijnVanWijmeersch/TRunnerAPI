@@ -1,17 +1,17 @@
 ﻿using TRunner.Common.Domain;
 
 namespace TRunner.Modules.Groups.Domain.Runners;
-public sealed class Runner : Entity
+public sealed class Member : Entity
 {
     public Guid Id { get; private set; }
     public string UserName { get; private set; }
     public int Score { get; private set; }
 
-    private Runner() { }
+    private Member() { }
 
-    public static Runner Create(Guid id, string userName, int score)
+    public static Member Create(Guid id, string userName, int score)
     {
-        return new Runner
+        return new Member
         {
             Id = id,
             UserName = userName,
@@ -28,6 +28,6 @@ public sealed class Runner : Entity
     {
         Score = score;
 
-        RaiseDomainEvent(new RunnerScoreChangedDomainEvent(Id, score));
+        RaiseDomainEvent(new MemberScoreChangedDomainEvent(Id, score));
     }
 }

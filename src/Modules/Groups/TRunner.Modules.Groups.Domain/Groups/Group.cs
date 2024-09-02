@@ -1,5 +1,4 @@
 ﻿using TRunner.Common.Domain;
-using TRunner.Modules.Groups.Domain.JoinTables;
 using TRunner.Modules.Groups.Domain.Runners;
 
 namespace TRunner.Modules.Groups.Domain.Groups;
@@ -12,9 +11,7 @@ public sealed class Group : Entity
     public string Description { get; private set; }
     public Guid OwnerId { get; private set; }
     public GroupStatus Status { get; private set; }
-
-    // Navigational properties
-    private IList<RunnerGroup> Runners { get; set; }
+    public IList<Member> Members { get; private set; }
 
     private Group() { }
 
@@ -33,7 +30,7 @@ public sealed class Group : Entity
         return group;
     }
 
-    public int RunnersCount => Runners.Count;
+    public int MemberCount => Members.Count;
 
     public Result Close()
     {
@@ -63,48 +60,42 @@ public sealed class Group : Entity
         return Result.Success();
     }
 
-    public Result RemoveRunner(Runner oldRunner)
+    public Result RemoveMember(Member oldMember)
     {
-        RunnerGroup? runner = Runners.FirstOrDefault(gr => gr.RunnerId == oldRunner.Id);
+        Member? member = Members.FirstOrDefault(gr => gr.Id == oldMember.Id);
 
-        if (runner is null)
+        if (member is null)
         {
-            return Result.Failure(GroupErrors.RunnerNotFound(oldRunner.Id));
+            return Result.Failure(GroupErrors.RunnerNotFound(oldMember.Id));
         }
 
-        Runners.Remove(runner);
+        Members.Remove(member);
 
-        RaiseDomainEvent(new RunnerRemovedFromGroupDomainEvent(oldRunner.Id, Id));
+        RaiseDomainEvent(new MemberRemovedFromGroupDomainEvent(oldMember.Id, Id));
 
         return Result.Success();
     }
 
-    public Result AddRunner(Runner newRunner)
+    public Result AddMember(Member newMember)
     {
 
-        if (Runners.Count >= Size)
+        if (Members.Count >= Size)
         {
             return Result.Failure(GroupErrors.GroupIsFull);
         }
 
-        RunnerGroup? runner = Runners.FirstOrDefault(gr => gr.RunnerId == newRunner.Id);
+        Member? member = Members.FirstOrDefault(gr => gr.Id == newMember.Id);
 
-        if (runner is not null)
+        if (member is not null)
         {
-            return Result.Failure(GroupErrors.RunnerAlreadyInGroup(newRunner.Id));
+            return Result.Failure(GroupErrors.RunnerAlreadyInGroup(newMember.Id));
         }
 
-        var runnerGroup = new RunnerGroup
-        {
-            GroupId = Id,
-            RunnerId = newRunner.Id
-        };
-
-        Runners.Add(runnerGroup);
+        Members.Add(newMember);
 
         return Result.Success();
     }
-    
+
     public Result ChangeOwner(Guid newOwnerId)
     {
         if (OwnerId == newOwnerId)
@@ -112,9 +103,9 @@ public sealed class Group : Entity
             return Result.Failure(GroupErrors.SameOwner(newOwnerId));
         }
 
-        bool runnerExists = Runners.Any(gr => gr.RunnerId == newOwnerId);
+        bool memberExists = Members.Any(gr => gr.Id == newOwnerId);
 
-        if (!runnerExists)
+        if (!memberExists)
         {
             return Result.Failure(GroupErrors.NewOwnerNotInGroup(newOwnerId));
         }

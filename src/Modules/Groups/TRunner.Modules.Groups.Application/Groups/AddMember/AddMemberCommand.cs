@@ -1,4 +1,4 @@
 ﻿using TRunner.Common.Application.Messaging;
 
 namespace TRunner.Modules.Groups.Application.Groups.AddRunner;
-public sealed record AddRunnerCommand(Guid GroupId, Guid RunnerId) : ICommand;
+public sealed record AddMemberCommand(Guid GroupId, Guid MemberId) : ICommand;

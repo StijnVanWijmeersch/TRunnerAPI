@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TRunner.Modules.Groups.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using TRunner.Modules.Groups.Infrastructure.Database;
 namespace TRunner.Modules.Groups.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(GroupsDbContext))]
-    partial class GroupsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240902145758_AddMembersToGroupsModule")]
+    partial class AddMembersToGroupsModule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -12,14 +12,13 @@ public sealed class User : Entity
     public string IdentityId { get; private set; }
     public IReadOnlyCollection<Role> Roles => _roles.ToList();
 
-    public static User Create(string userName, string email, string identityId)
+    public static User Create(string userName, string email)
     {
         var user = new User
         {
             Id = Guid.NewGuid(),
             UserName = userName,
-            Email = email,
-            IdentityId = identityId
+            Email = email
         };
 
         user._roles.Add(Role.User);

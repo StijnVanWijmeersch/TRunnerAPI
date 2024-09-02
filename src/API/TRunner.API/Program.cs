@@ -6,6 +6,7 @@ using TRunner.Common.Application;
 using TRunner.Common.Infrastructure;
 using TRunner.Common.Presentation.Endpoints;
 using TRunner.Modules.Groups.Infrastructure;
+using TRunner.Modules.Users.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerDoc();
 
 Assembly[] moduleApplicationAssemblies = [
     TRunner.Modules.Groups.Application.AssemblyReference.Assembly,
@@ -23,11 +24,12 @@ Assembly[] moduleApplicationAssemblies = [
 
 builder.Services.AddApplication(moduleApplicationAssemblies);
 
-builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("Database")!);
+builder.Services.AddInfrastructure();
 
 builder.Configuration.AddModulesConfiguration(["groups", "users"]);
 
 builder.Services.AddGroupsModule(builder.Configuration);
+builder.Services.AddUsersModule(builder.Configuration);
 
 WebApplication app = builder.Build();
 

@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\TRunner.Common.Application\TRunner.Common.Application.csproj" />
-    <ProjectReference Include="..\TRunner.Modules.Users.Domain\TRunner.Modules.Users.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Common\TRunner.Common.Presentation\TRunner.Common.Presentation.csproj" />
+    <ProjectReference Include="..\TRunner.Modules.Runs.Application\TRunner.Modules.Runs.Application.csproj" />
   </ItemGroup>
 
 </Project>

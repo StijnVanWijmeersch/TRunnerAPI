@@ -35,13 +35,23 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{25270FF8-B278-4B63-A866-BFF6CAEDD0E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Users.Domain", "src\Modules\Users\TRunner.Modules.Users.Domain\TRunner.Modules.Users.Domain.csproj", "{5C4DBFF8-E82C-4528-8E17-792D77B6AD39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRunner.Modules.Users.Domain", "src\Modules\Users\TRunner.Modules.Users.Domain\TRunner.Modules.Users.Domain.csproj", "{5C4DBFF8-E82C-4528-8E17-792D77B6AD39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Users.Application", "src\Modules\Users\TRunner.Modules.Users.Application\TRunner.Modules.Users.Application.csproj", "{10AF16E3-DF63-4DFE-89A3-F734875152ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRunner.Modules.Users.Application", "src\Modules\Users\TRunner.Modules.Users.Application\TRunner.Modules.Users.Application.csproj", "{10AF16E3-DF63-4DFE-89A3-F734875152ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Users.Presentation", "src\Modules\Users\TRunner.Modules.Users.Presentation\TRunner.Modules.Users.Presentation.csproj", "{AF3E7E7E-42FB-4FC3-BBF8-665053610BB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRunner.Modules.Users.Presentation", "src\Modules\Users\TRunner.Modules.Users.Presentation\TRunner.Modules.Users.Presentation.csproj", "{AF3E7E7E-42FB-4FC3-BBF8-665053610BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Users.Infrastructure", "src\Modules\Users\TRunner.Modules.Users.Infrastructure\TRunner.Modules.Users.Infrastructure.csproj", "{E56F4B60-91D2-4A13-A19E-90C42C4B5176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TRunner.Modules.Users.Infrastructure", "src\Modules\Users\TRunner.Modules.Users.Infrastructure\TRunner.Modules.Users.Infrastructure.csproj", "{E56F4B60-91D2-4A13-A19E-90C42C4B5176}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runs", "Runs", "{A359A71A-238F-44FE-B6DB-9E713FFE3DCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Runs.Domain", "src\Modules\Runs\TRunner.Modules.Runs.Domain\TRunner.Modules.Runs.Domain.csproj", "{FE9975DE-F272-437A-B4F6-A25DAB0CB6CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Runs.Application", "src\Modules\Runs\TRunner.Modules.Runs.Application\TRunner.Modules.Runs.Application.csproj", "{B26778A0-C7A7-40F3-A857-13F194ED36A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Runs.Infrastructure", "src\Modules\Runs\TRunner.Modules.Runs.Infrastructure\TRunner.Modules.Runs.Infrastructure.csproj", "{FCF69D9E-BB2C-4358-96A3-91040A7D2474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRunner.Modules.Runs.Presentation", "src\Modules\Runs\TRunner.Modules.Runs.Presentation\TRunner.Modules.Runs.Presentation.csproj", "{894F22F2-A51C-41AB-B3B4-427D1485C599}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +115,22 @@ Global
 		{E56F4B60-91D2-4A13-A19E-90C42C4B5176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E56F4B60-91D2-4A13-A19E-90C42C4B5176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E56F4B60-91D2-4A13-A19E-90C42C4B5176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE9975DE-F272-437A-B4F6-A25DAB0CB6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9975DE-F272-437A-B4F6-A25DAB0CB6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE9975DE-F272-437A-B4F6-A25DAB0CB6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE9975DE-F272-437A-B4F6-A25DAB0CB6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B26778A0-C7A7-40F3-A857-13F194ED36A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B26778A0-C7A7-40F3-A857-13F194ED36A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B26778A0-C7A7-40F3-A857-13F194ED36A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B26778A0-C7A7-40F3-A857-13F194ED36A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF69D9E-BB2C-4358-96A3-91040A7D2474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF69D9E-BB2C-4358-96A3-91040A7D2474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF69D9E-BB2C-4358-96A3-91040A7D2474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF69D9E-BB2C-4358-96A3-91040A7D2474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894F22F2-A51C-41AB-B3B4-427D1485C599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894F22F2-A51C-41AB-B3B4-427D1485C599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894F22F2-A51C-41AB-B3B4-427D1485C599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894F22F2-A51C-41AB-B3B4-427D1485C599}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,6 +154,11 @@ Global
 		{10AF16E3-DF63-4DFE-89A3-F734875152ED} = {25270FF8-B278-4B63-A866-BFF6CAEDD0E0}
 		{AF3E7E7E-42FB-4FC3-BBF8-665053610BB5} = {25270FF8-B278-4B63-A866-BFF6CAEDD0E0}
 		{E56F4B60-91D2-4A13-A19E-90C42C4B5176} = {25270FF8-B278-4B63-A866-BFF6CAEDD0E0}
+		{A359A71A-238F-44FE-B6DB-9E713FFE3DCA} = {B1B5432E-FAD6-4C8C-8064-350F03B730C1}
+		{FE9975DE-F272-437A-B4F6-A25DAB0CB6CA} = {A359A71A-238F-44FE-B6DB-9E713FFE3DCA}
+		{B26778A0-C7A7-40F3-A857-13F194ED36A8} = {A359A71A-238F-44FE-B6DB-9E713FFE3DCA}
+		{FCF69D9E-BB2C-4358-96A3-91040A7D2474} = {A359A71A-238F-44FE-B6DB-9E713FFE3DCA}
+		{894F22F2-A51C-41AB-B3B4-427D1485C599} = {A359A71A-238F-44FE-B6DB-9E713FFE3DCA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6EC6F4E2-BECD-4776-917F-4221DC1C37A1}

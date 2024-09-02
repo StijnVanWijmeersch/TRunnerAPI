@@ -7,16 +7,16 @@ using TRunner.Modules.Groups.Domain.Runners;
 namespace TRunner.Modules.Groups.Application.Groups.CreateGroup;
 internal sealed class CreateGroupCommandHandler(
     IGroupRepository groupRepository,
-    IRunnerRepository runnerRepository,
+    IMemberRepository runnerRepository,
     IUnitOfWork unitOfWork): ICommandHandler<CreateGroupCommand, Guid>
 {
     public async Task<Result<Guid>> Handle(CreateGroupCommand request, CancellationToken cancellationToken)
     {
-        Runner? runner = await runnerRepository.GetAsync(request.OwnerId, cancellationToken);
+        Member? member = await runnerRepository.GetAsync(request.OwnerId, cancellationToken);
 
-        if (runner is null)
+        if (member is null)
         {
-            return Result.Failure<Guid>(RunnerErrors.NotFound(request.OwnerId));
+            return Result.Failure<Guid>(MemberErrors.NotFound(request.OwnerId));
         }
 
         var group = Group.Create(request.Size, request.Name, request.Description, request.OwnerId);

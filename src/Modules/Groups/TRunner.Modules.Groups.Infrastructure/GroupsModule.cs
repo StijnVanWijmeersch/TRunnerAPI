@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TRunner.Common.Presentation.Endpoints;
 using TRunner.Modules.Groups.Application.Abstractions;
 using TRunner.Modules.Groups.Domain.Groups;
+using TRunner.Modules.Groups.Domain.Runners;
 using TRunner.Modules.Groups.Infrastructure.Database;
 using TRunner.Modules.Groups.Infrastructure.Groups;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using TRunner.Common.Presentation.Endpoints;
-using TRunner.Modules.Groups.Domain.Runners;
 using TRunner.Modules.Groups.Infrastructure.Runners;
 
 namespace TRunner.Modules.Groups.Infrastructure;
@@ -24,7 +23,7 @@ public static class GroupsModule
         services.AddEndpoints(Presentation.AssemblyReference.Assembly);
 
         return services;
-        
+
     }
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
@@ -40,6 +39,6 @@ public static class GroupsModule
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<GroupsDbContext>());
 
         services.AddScoped<IGroupRepository, GroupRepository>();
-        services.AddScoped<IRunnerRepository, RunnerRepository>();
+        services.AddScoped<IMemberRepository, MemberRepository>();
     }
 }

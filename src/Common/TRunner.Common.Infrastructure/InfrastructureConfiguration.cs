@@ -9,12 +9,8 @@ namespace TRunner.Common.Infrastructure;
 public static class InfrastructureConfiguration
 {
 
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, string dbConnectionString)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-         DataSource    new SqmDa (dbConnectionString);
-
-        services.TryAddSingleton(sqlDataSource);
-
         services.TryAddScoped<IDbConnectionFactory, DbConnectionFactory>();
 
         return services;

@@ -31,5 +31,6 @@ internal sealed class GroupConfiguration : IEntityTypeConfiguration<Group>
 
         builder.Property(g => g.Status)
             .IsRequired();
+
     }
 }
