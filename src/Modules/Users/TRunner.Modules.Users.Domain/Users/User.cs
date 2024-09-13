@@ -12,6 +12,8 @@ public sealed class User : Entity
     public string IdentityId { get; private set; }
     public IReadOnlyCollection<Role> Roles => _roles.ToList();
 
+    private User() { }
+
     public static User Create(string userName, string email)
     {
         var user = new User
